@@ -1,0 +1,24 @@
+@keyframes send-hover {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    70% {
+      transform: translateX(2rem);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(2.5rem);
+      opacity: 0;
+    }
+  }
+  
+  .send-button svg {
+    transition: none;
+  }
+  
+  /* só anima quando hover no botão */
+  .send-button:hover svg {
+    animation: send-hover 1s forwards;
+  }
+  

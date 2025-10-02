@@ -7,9 +7,8 @@ export const FetchEmailsUser = async (userId, setEmails) => {
     if (!response.ok) throw new Error("Erro ao buscar emails");
 
     const data = await response.json();
-    console.log(data);
-    const importants = data.filter((email) => email.is_important);
-    setEmails(importants);
+
+    setEmails(data);
   } catch (err) {
     console.error(err);
   }

@@ -21,8 +21,9 @@ export default function MailImprodutive() {
   };
 
   const unproductiveEmails = emails.filter(
-    (email) => email.categoria.trim().toLowerCase() === "Improdutivo"
+    (email) => email.categoria && email.categoria.trim().toLowerCase() === "improdutivo"
   );
+  
 
   return (
     <div className="flex-1 flex flex-col bg-white dark:bg-black p-6 overflow-y-auto">

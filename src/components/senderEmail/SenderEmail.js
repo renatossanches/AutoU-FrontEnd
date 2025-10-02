@@ -1,11 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import "./SenderEmail.css";
 import { ReactComponent as SvgMailSend } from "../../issues/svgSend.svg";
-import { AuthContext } from "../../App"; // caso queira pegar sender_id do usuário
 import { PostSendEmail } from "../../routers/private/POST/PostSendEmail";
 
 const SenderEmail = () => {
-  const { user } = useContext(AuthContext); // pega usuário logado
   const [to, setTo] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");

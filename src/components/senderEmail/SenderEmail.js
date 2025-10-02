@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./SenderEmail.css";
 import { ReactComponent as SvgMailSend } from "../../issues/svgSend.svg";
 import { PostSendEmail } from "../../routers/private/POST/PostSendEmail";
 import { AutoCompleteInput } from "./AutoCompleteInput";
+import { AuthContext } from "../../App"; // caso queira exibir info do usuário logado
 
 const SenderEmail = () => {
+  const { user } = useContext(AuthContext); // usuário logado
   const [to, setTo] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
@@ -14,7 +16,14 @@ const SenderEmail = () => {
 
   const handleSend = async (e) => {
     e.preventDefault();
-    const emailData = { receiver_email: to, subject, body: message };
+
+    // Apenas envia os campos necessários, o backend pega o sender automaticamente
+    const emailData = {
+      receiver_email: to,
+      subject,
+      body: message
+    };
+
     const result = await PostSendEmail(emailData);
 
     if (result.error) {
@@ -34,9 +43,15 @@ const SenderEmail = () => {
   return (
     <div className="flex items-center justify-center">
       <div className="p-8 bg-white dark:bg-black border rounded-lg shadow w-full max-w-3xl">
-        <h2 className="text-4xl font-bold mb-4 text-gray-800 dark:text-white">
-          Enviar Email
+        <h2 className="text-4xl font-bold mb-4 text-gray-800 dark:text-white flex items-center gap-2">
+          <SvgMailSend className="w-6 h-6" /> Enviar Email
         </h2>
+
+        {user && (
+          <p className="text-sm text-gray-600 dark:text-gray-200 mb-4">
+            Logado como: <span className="font-semibold">{user.email}</span>
+          </p>
+        )}
 
         {error && <p className="text-red-500 mb-2">{error}</p>}
         {success && <p className="text-green-500 mb-2">{success}</p>}
@@ -89,9 +104,9 @@ const SenderEmail = () => {
 
           <button
             type="submit"
-            className="send-button flex items-center gap-2 bg-orange-400 dark:bg-white hover:bg-orange-600 text-white rounded-lg px-4 py-2 shadow"
+            className="send-button flex items-center gap-2 bg-orange-400 dark:bg-white hover:bg-orange-600 text-white dark:text-black rounded-lg px-4 py-2 shadow"
           >
-            <span className="text-white dark:text-black">Enviar</span>
+            Enviar
             <SvgMailSend className="w-5 h-5 text-black dark:text-black" />
           </button>
         </form>

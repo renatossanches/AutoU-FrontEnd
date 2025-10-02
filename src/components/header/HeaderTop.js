@@ -10,6 +10,8 @@ export default function HeaderTop({ darkMode, toggleDarkMode }) {
 
   const handleLogout = () => {
     setUser(null);
+    localStorage.removeItem("user"); 
+    localStorage.removeItem("authToken");
     navigate("/login");
   };
 
@@ -29,7 +31,7 @@ export default function HeaderTop({ darkMode, toggleDarkMode }) {
             className="flex items-center focus:outline-none"
           >
             <img
-              src={user.avatar || "https://via.placeholder.com/36"}
+              src={"https://i.ibb.co/GQSLMj77/user.png"}
               alt="Usuário"
               className="w-9 h-9 rounded-full border"
             />

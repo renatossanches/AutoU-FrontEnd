@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./SenderEmail.css";
 import { ReactComponent as SvgMailSend } from "../../issues/svgSend.svg";
 import { PostSendEmail } from "../../routers/private/POST/PostSendEmail";
+import { AutoCompleteInput } from "./AutoCompleteInput";
 
 const SenderEmail = () => {
   const [to, setTo] = useState("");
@@ -13,13 +14,7 @@ const SenderEmail = () => {
 
   const handleSend = async (e) => {
     e.preventDefault();
-
-    const emailData = {
-      receiver_email: to,
-      subject: subject,
-      body: message
-    };
-
+    const emailData = { receiver_email: to, subject, body: message };
     const result = await PostSendEmail(emailData);
 
     if (result.error) {
@@ -54,31 +49,30 @@ const SenderEmail = () => {
               value={to}
               onChange={(e) => setTo(e.target.value)}
               placeholder="destinatario@exemplo.com"
-              className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-orange-400 dark:focus:ring-gray-200"
+              className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 dark:bg-gray-800 dark:text-white focus:ring-orange-400 dark:focus:ring-gray-200"
               required
             />
           </div>
 
           <div>
             <label className="block text-gray-700 dark:text-gray-200 mb-1">Assunto:</label>
-            <input
-              type="text"
+            <AutoCompleteInput
               value={subject}
-              onChange={(e) => setSubject(e.target.value)}
+              onChange={setSubject}
               placeholder="Assunto do email"
-              className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
-              required
+              field="subject"
+              rows={1}
             />
           </div>
 
           <div>
             <label className="block text-gray-700 dark:text-gray-200 mb-1">Mensagem:</label>
-            <textarea
+            <AutoCompleteInput
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={setMessage}
               placeholder="Escreva sua mensagem aqui..."
-              className=" w-full border rounded-lg p-2 h-52 resize-none focus:outline-none focus:ring-2 focus:ring-orange-400"
-              required
+              field="message"
+              rows={6}
             />
           </div>
 

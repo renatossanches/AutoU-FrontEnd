@@ -11,12 +11,14 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) setUser(storedUser);
+    
     await LoginUser({ email, password }, (data) => {
       if (data.error) {
+        alert(data.error);
       } else {
         setUser({ id: data.id, email: data.email, name: data.name });
-        setToken(data.access_token);
         navigate("/entrada");
       }
     });

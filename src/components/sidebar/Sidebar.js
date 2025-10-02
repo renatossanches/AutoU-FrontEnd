@@ -19,7 +19,7 @@ export default function Sidebar() {
     <div className="w-60 h-screen bg-gray-100 dark:bg-gray-900 border-r p-4">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-bold flex items-center gap-2 dark:text-white">
-          <img src="mail.png" alt="Logo" className="w-8 h-6 inline" /> AutoU
+          <img src="https://i.ibb.co/DPy8X8DC/mail.png" alt="Logo" className="w-8 h-6 inline" /> AutoU
         </h2>
         <button
           className="px-2 py-1 bg-orange-400 hover:bg-orange-600 text-white rounded-lg shadow flex items-center dark:bg-black dark:hover:bg-black"

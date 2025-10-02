@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/AutoU-FrontEnd/static/css/main.35bd265e.css",
-    "main.js": "/AutoU-FrontEnd/static/js/main.b99e7983.js",
+    "main.js": "/AutoU-FrontEnd/static/js/main.901cb04b.js",
     "static/js/453.c2ea0d57.chunk.js": "/AutoU-FrontEnd/static/js/453.c2ea0d57.chunk.js",
     "static/media/svgAddEmailSender.svg": "/AutoU-FrontEnd/static/media/svgAddEmailSender.f8bda066ee82b0a544d59142ebbaa724.svg",
     "static/media/svgMail.svg": "/AutoU-FrontEnd/static/media/svgMail.182c999227c953d0339d6943ccd43a06.svg",
     "static/media/svgSend.svg": "/AutoU-FrontEnd/static/media/svgSend.1a2bc34c43db070eb062eea91778b022.svg",
     "index.html": "/AutoU-FrontEnd/index.html",
     "main.35bd265e.css.map": "/AutoU-FrontEnd/static/css/main.35bd265e.css.map",
-    "main.b99e7983.js.map": "/AutoU-FrontEnd/static/js/main.b99e7983.js.map",
+    "main.901cb04b.js.map": "/AutoU-FrontEnd/static/js/main.901cb04b.js.map",
     "453.c2ea0d57.chunk.js.map": "/AutoU-FrontEnd/static/js/453.c2ea0d57.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.35bd265e.css",
-    "static/js/main.b99e7983.js"
+    "static/js/main.901cb04b.js"
   ]
 }

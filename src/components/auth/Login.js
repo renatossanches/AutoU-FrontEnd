@@ -17,7 +17,7 @@ export default function Login() {
           alert(data.error);
         } else {
           const userData = { id: data.id, email: data.email, name: data.name };
-          localStorage.setItem("user", JSON.stringify(userData)); // 👈 Salva user
+          localStorage.setItem("user", JSON.stringify(userData));
           setUser(userData);
           navigate("/entrada");
         }

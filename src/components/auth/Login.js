@@ -4,25 +4,26 @@ import { useNavigate, Link } from "react-router";
 import LoginUser from "../../routers/public/POST/LoginUser";
 
 export default function Login() {
-    const { setUser, setToken } = useContext(AuthContext);
+    const { setUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (storedUser) setUser(storedUser);
+    const handleLogin = async (e) => {
+      e.preventDefault();
     
-    await LoginUser({ email, password }, (data) => {
-      if (data.error) {
-        alert(data.error);
-      } else {
-        setUser({ id: data.id, email: data.email, name: data.name });
-        navigate("/entrada");
-      }
-    });
-  };
+      await LoginUser({ email, password }, (data) => {
+        if (data.error) {
+          alert(data.error);
+        } else {
+          const userData = { id: data.id, email: data.email, name: data.name };
+          localStorage.setItem("user", JSON.stringify(userData)); // 👈 Salva user
+          setUser(userData);
+          navigate("/entrada");
+        }
+      });
+    };
+    
 
 
   return (

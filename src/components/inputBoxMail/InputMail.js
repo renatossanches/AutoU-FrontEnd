@@ -14,7 +14,6 @@ export default function InputMail() {
 
   useEffect(() => {
     if (!user) return;
-    console.log(user);
     FetchEmailsUser(user.id, setEmails);
     setSuggestions([]);
     setHighlightIndex(-1);

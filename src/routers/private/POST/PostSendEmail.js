@@ -1,17 +1,22 @@
 export const PostSendEmail = async ({ receiver_email, subject, body }) => {
   try {
+    const token = localStorage.getItem("token");
+
     const response = await fetch(
       "https://autou-backend-653q.onrender.com/emails/send",
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ receiver_email, subject, body })
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({ receiver_email, subject, body }),
       }
     );
 
     if (!response.ok) {
       const errData = await response.json();
-      throw new Error(errData.detail || "Erro ao enviar email");
+      throw new Error(errData.detail);
     }
 
     const data = await response.json();
